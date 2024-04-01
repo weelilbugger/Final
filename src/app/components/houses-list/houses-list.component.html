@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap
+  align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h2 class="h2">Houses List</h2>
+  </div>
+  <div class="table-responsive">
+  <table class="table table-bordered">
+  <thead>
+  <tr>
+  <th scope="col">ID</th>
+  <th scope="col">Year of Census</th>
+  <th scope="col">Census Taker's Name</th>
+  <th scope="col">Number of People in House</th>
+  <th scope="col">Household State</th>
+  <th scope="col">Household City</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let house of Houses; let i = index">
+  <th scope="row">{{house._id}}</th>
+  <td>{{house.year}}</td>
+  <td>{{house.censustakername}}</td>
+  <td>{{house.numberofpeople}}</td>
+  <td>{{house.state}}</td>
+  <td>{{house.city}}</td>
+  <td class="text-center">
+  <button class="btn btn-sm btn-primary"
+  (click)="onDelete(house._id)">Delete
+  </button>
+  <td class="text-center">
+    <ng-container *ngIf="house._id">
+      <a class="nav-link" routerLinkActive="active"
+         [routerLink]="['/update-house', house._id]">Update House</a>
+    </ng-container>
+  </td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  </div>
